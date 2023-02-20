@@ -16,7 +16,6 @@
 # setup dmenu
 # starship config
 # zsh config and oh-my install
-# how to instll casks in this script
 # gitconfig
 
 ################################################################################
@@ -99,14 +98,28 @@ if ! command -v brew &>/dev/null; then
     info "Installing homebrew"
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
-    info "Brew already installed, updating instead"
+    info "Brew already installed, update instead"
     brew update
 fi
 
 # Helpers for installing via brew
 install() {
-    if ! command -v "$@" &>/dev/null; then
-        brew install -q "$@" &>/dev/null
+    if [[ "$1" == "cask" ]]; then
+        if ! command -v "$2" &>/dev/null; then
+            info "Installing $2"
+            brew install -q --cask "$2"
+        else
+            info "$2 already installed, updating"
+            brew upgrade -q --cask "$2" &>/dev/null
+        fi
+    else
+        if ! command -v "$1" &>/dev/null; then
+            info "Installing $1"
+            brew install -q "$1"
+        else
+            info "$1 already installed, updating"
+            brew upgrade -q "$1" &>/dev/null
+        fi
     fi
 }
 
@@ -114,6 +127,9 @@ tap() {
     brew tap -q "$@" &>/dev/null
 }
 
+brew analytics off
+
+tap homebrew/cask-fonts
 tap FelixKratz/formulae
 install sketchybar
 
@@ -127,6 +143,32 @@ install kitty
 
 install node
 
+install git
+
+#install tunguard
+
+#install cask 1password
+#install cask alfred
+#install cask autoproxy
+#install cask browserstacklocal
+#install cask cleanmymac
+#install cask discord
+#install cask docker
+#install cask firefox
+#install cask google-chrome
+#install cask imageoptim
+#install cask kitty
+#install cask linearmouse
+#install cask microsoft-edge
+#install cask netnewswire
+#install cask notion
+#install cask raindrop
+#install cask slack
+#install cask spotify
+#install cask visual-studio-code
+#install cask vlc
+#install cask zoom
+
 brew cleanup
 
 ################################################################################
@@ -134,10 +176,10 @@ brew cleanup
 ################################################################################
 
 info "Show hidden files"
-defaults write com.apple.finder AppleShowAllFiles YES
+defaults write com.apple.finder AppleShowAllFiles -bool true
 
 info "Remove DS_Stores"
-defaults write com.apple.desktopservices DSDontWriteNetworkStores true
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
 info "Removing applications from dock"
 defaults write com.apple.dock static-only -bool true
@@ -186,3 +228,16 @@ defaults write com.apple.finder ShowPathbar -bool true
 
 info "Restart Finder"
 killall Finder &>/dev/null
+
+info "Adding dotfiles"
+[ ! -d "$HOME/dotfiles" ] && git clone --bare git@github.com:aaronjbaptiste/dotfiles.git $HOME/dotfiles
+git --git-dir=$HOME/dotfiles/ --work-tree=$HOME checkout master
+
+info "Restart sketchybar"
+brew services restart felixkratz/formulae/sketchybar
+
+info "Restart yabai"
+brew services restart koekeishiya/formulae/yabai
+
+info "Restart skhd"
+brew services restart koekeishiya/formulae/skhd

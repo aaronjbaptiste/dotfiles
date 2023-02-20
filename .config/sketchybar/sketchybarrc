@@ -1,0 +1,42 @@
+#!/bin/sh
+
+FONT="JetBrainsMono Nerd Font Mono"
+
+bar=(
+  color=0xff1F1F28
+  height=32
+  sticky=on
+  padding_left=10
+  padding_right=10
+)
+
+default=(
+  icon.drawing=off
+  label.padding_left=4
+  label.padding_right=4
+  label.color=0xffDCD7BA
+  label.font="$FONT:Bold:13.0"
+)
+
+sketchybar \
+  --bar "${bar[@]}" \
+  --default "${default[@]}"
+
+sketchybar \
+  --add item space left \
+  --set space script='sketchybar --set $NAME label="[$(echo "$INFO" | jq .[])]"'\
+  --subscribe space space_change
+
+
+sketchybar \
+  --add item app_name left \
+  --set app_name script='sketchybar --set $NAME label="$INFO"' \
+  --subscribe app_name front_app_switched
+
+sketchybar \
+  --add item time right \
+  --set time script='sketchybar --set $NAME label="$(date "+%H:%M")"' \
+             update_freq=30 \
+  --subscribe time system_woke
+
+sketchybar --update

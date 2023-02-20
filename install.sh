@@ -9,13 +9,8 @@
 # During upgrade if it it not installed, suggest running install version instead?
 # Test homebrew install
 # Add optional log files
-# yabai config
-# skhd config
-# kitty config
-# sketchybar
 # setup dmenu
 # starship config
-# zsh config and oh-my install
 # gitconfig
 
 ################################################################################

@@ -44,9 +44,24 @@ yabai -m config                                 \
     mouse_action2                resize         \
     mouse_drop_action            swap
 
-yabai -m rule --add app="^(Calculator|System Settings|Photo Booth|Archive Utility|Color Picker|Dictionary|Alfred|.*Legends.*)$" manage=off
-yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
-yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off
-yabai -m rule --add app="System Information" manage=off
+# shellcheck disable=SC3030
+yabai_apps=(
+  "Calendar"
+  "Finder"
+  "Google Chrome"
+  "Mail"
+  "Notes"
+  "Slack"
+  "kitty"
+)
 
-echo "yabai configuration loaded.."
+YABAI_APPS_REGEX="$(
+  IFS=\|
+  # shellcheck disable=SC3054
+  echo "${yabai_apps[*]}"
+)"
+
+# whitelist strategy
+yabai -m rule --add app!="${YABAI_APPS_REGEX}" manage=off
+
+echo "$(date '+%F %T%z') yabai configuration loaded"

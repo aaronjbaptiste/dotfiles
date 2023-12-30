@@ -1,4 +1,4 @@
-#!/usr/bin/fish
+#!/usr/bin/sh
 
 # Syntax Highlighting Colors
 fish_color_normal DCD7BA

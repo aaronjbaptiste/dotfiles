@@ -1,0 +1,14 @@
+# https://github.com/Homebrew/homebrew-bundle
+
+# Homebrew
+# https://github.com/Homebrew/brew/
+
+brew "openssl"
+brew "bat"
+
+# homebrew-cask
+# https://github.com/Homebrew/homebrew-cask
+
+cask "slack"
+
+# vim: set filetype=ruby:

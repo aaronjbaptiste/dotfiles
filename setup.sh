@@ -87,6 +87,7 @@ stow_conflicts=(
   ".asdfrc"
   ".config/fish"
   ".config/kitty"
+  ".config/nvim"
   ".config/yabai"
   ".config/skhd"
   ".laptop.local"

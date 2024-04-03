@@ -43,11 +43,11 @@
     };
   in
   {
-    darwinConfigurations = {
-      Aarons-Macbook-Pro = darwin.lib.darwinSystem {
-        modules = [ configuration ];
-      };
+    darwinConfigurations."Aarons-MacBook-Pro" = darwin.lib.darwinSystem {
+      modules = [ configuration ];
     };
 
+    # Expose the package set, including overlays, for convenience.
+    darwinPackages = self.darwinConfigurations."Aarons-MacBook-Pro".pkgs;
   };
 }

@@ -44,7 +44,7 @@
   in
   {
     darwinConfigurations = {
-      macbook = darwin.lib.darwinSystem {
+      Aarons-Macbook-Pro = darwin.lib.darwinSystem {
         modules = [ configuration ];
       };
     };

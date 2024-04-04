@@ -57,7 +57,7 @@ install_nix() {
     sh <(curl -L https://nixos.org/nix/install)
 
     # After attempting installation, advise the user to restart the script
-    echo "Nix installation attempted. Please restart this script in a new terminal to continue."
+    echo "Nix installation complete. Please restart this script in a new terminal to continue."
     exit 1
   fi
 

@@ -46,14 +46,20 @@ set_initial_hostname() {
   sudo scutil --set HostName "$hostname"
   sudo scutil --set LocalHostName "$hostname"
 
-  echo "Hostname set to $hostname, please rerun this script in a new terminal to continue installation."
+  echo "Hostname set to $hostname, please restart this script in a new terminal to continue."
   exit
 }
 
 install_nix() {
-  command -v nix >/dev/null || {
+  if ! command -v nix >/dev/null; then
+    echo "Nix is not installed. Installing Nix now..."
+    # Attempt to install Nix
     sh <(curl -L https://nixos.org/nix/install)
-  }
+
+    # After attempting installation, advise the user to restart the script
+    echo "Nix installation attempted. Please restart this script in a new terminal to continue."
+    exit 1
+  fi
 
   # Create the configuration directory
   mkdir -p ~/.config/nix

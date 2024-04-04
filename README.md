@@ -11,12 +11,15 @@ Full MacOS system setup using [Nix](https://github.com/NixOS/nix) and [Nix-Darwi
 Run at your own risk, please review the source before running random scripts:
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/aaronjbaptiste/dotfiles/main/install | bash
+curl -fsSL -o install_script.sh https://raw.githubusercontent.com/aaronjbaptiste/dotfiles/main/install
+chmod +x install_script.sh
+./install_script.sh
+rm ./install_script.sh
 ```
 
 ## Updating
 
-The script above will have been cloned into ~/.dotfiles and can be safetly run multiple times:
+The repo for the script above will have been cloned into ~/.dotfiles and can be safetly run multiple times:
 
 ```sh
 cd ~/.dotfiles

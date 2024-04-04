@@ -37,8 +37,9 @@ chmod +x install && ./install
 
 ## Todo
 
-- [] Read username (currently hardcoded)
-- [] Read hostname (currently hardcoded)
+- [ ] Read username (currently hardcoded)
+- [ ] Read hostname (currently hardcoded)
+- [ ] private internet access fails to install via brew cask
 
 ## Credits
 

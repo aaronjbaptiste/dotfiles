@@ -22,7 +22,7 @@ _:
 
     # Security
     "1password"
-    "private-internet-access"
+    # "private-internet-access"
 
     # Browsers
     "google-chrome"

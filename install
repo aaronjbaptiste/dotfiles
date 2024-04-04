@@ -47,7 +47,7 @@ set_initial_hostname() {
   sudo scutil --set LocalHostName "$hostname"
 
   echo "Hostname set to $hostname, please restart this script in a new terminal to continue."
-  exit
+  exit 1
 }
 
 install_nix() {

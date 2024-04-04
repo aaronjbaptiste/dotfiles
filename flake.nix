@@ -7,43 +7,61 @@
       url = "github:LnL7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-homebrew = {
+      url = "github:zhaofengli-wip/nix-homebrew";
+    };
+    homebrew-bundle = {
+      url = "github:homebrew/homebrew-bundle";
+      flake = false;
+    };
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
   };
 
-  outputs = { self, darwin, nixpkgs } @inputs:
-  let
-    sharedDarwinConfiguration = { pkgs, ... }: {
-
-        # List packages installed in system profile. To search by name, run:
-        # $ nix-env -qaP | grep wget
-        environment.systemPackages = [
-            pkgs.vim
-            pkgs.helix
-        ];
-
-        # Auto upgrade nix package and the daemon service.
-        services.nix-daemon.enable = true;
-
-        # Create /etc/zshrc that loads the nix-darwin environment.
-        programs.zsh.enable = true;  # default shell on catalina
-
-         # Necessary for using flakes on this system.
-        nix.settings.experimental-features = "nix-command flakes";
-
-        # The platform the configuration will be used on.
-        nixpkgs.hostPlatform = "aarch64-darwin";
-    };
-  in
+  outputs = { self, darwin, nixpkgs, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask } @inputs:
   {
-    darwinConfigurations."Aarons-MacBook-Pro" = darwin.lib.darwinSystem {
-      system = "aaarch64-darwin";
-      modules = [
-        sharedDarwinConfiguration
-        ./modules/darwin/default.nix
-      ];
-      specialArgs = { inherit inputs; };
-    };
+    darwinConfigurations = {
+      sixstrings = darwin.lib.darwinSystem {
+        system = "aaarch64-darwin";
+        inherit inputs;
 
-    # Expose the package set, including overlays, for convenience.
-    darwinPackages = self.darwinConfigurations."Aarons-MacBook-Pro".pkgs;
+        modules = [
+          nix-homebrew.darwinModules.nix-homebrew
+          {
+            nix-homebrew = {
+              # Install Homebrew under the default prefix
+              enable = true;
+
+              # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
+              enableRosetta = true;
+
+              user = "aaron";
+
+              # Optional: Declarative tap management
+              taps = {
+                "homebrew/homebrew-core" = homebrew-core;
+                "homebrew/homebrew-cask" = homebrew-cask;
+                "homebrew/homebrew-bundle" = homebrew-bundle;
+              };
+
+              # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
+              mutableTaps = false;
+
+              # Automatically migrate existing Homebrew installations
+              autoMigrate = true;
+            };
+          }
+          ./hosts/sixstrings/default.nix
+          ./modules/darwin/default.nix
+        ];
+        specialArgs = { inherit inputs; };
+      };
+    };
   };
 }

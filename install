@@ -33,6 +33,20 @@ install_nix() {
   command -v nix >/dev/null || {
     sh <(curl -L https://nixos.org/nix/install)
   }
+
+  # Create the configuration directory
+  mkdir -p ~/.config/nix
+
+  # Configuration to be added that enables flakes
+  config_line="experimental-features = nix-command flakes"
+
+   # Path to the Nix configuration file
+  nix_config_file=~/.config/nix/nix.conf
+
+  # Check if the configuration line already exists; append if not
+  if ! grep -qF -- "$config_line" "$nix_config_file"; then
+    echo "$config_line" >> "$nix_config_file"
+  fi
 }
 
 clone_repository() {
@@ -52,7 +66,7 @@ clone_repository() {
 darwin_build() {
   command -v darwin-rebuild >/dev/null || {
     # Install nix-darwin
-    nix --extra-experimental-features "nix-command flakes" run nix-darwin -- switch --flake "$HOME/dotfiles"
+    nix run nix-darwin -- switch --flake "$HOME/dotfiles"
   }
 
   # Apply the configuration

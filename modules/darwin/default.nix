@@ -5,6 +5,7 @@
 
     homebrew = {
         enable = true;
+        taps = [ "homebrew/cask-versions" ];
         casks = pkgs.callPackage ./casks.nix {};
     };
 }

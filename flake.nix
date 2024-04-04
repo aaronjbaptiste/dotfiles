@@ -27,7 +27,7 @@
   outputs = { self, darwin, nixpkgs, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask } @inputs:
   {
     darwinConfigurations = {
-      sixstrings = darwin.lib.darwinSystem {
+      "Aarons-MacBook-Pro" = darwin.lib.darwinSystem {
         system = "aaarch64-darwin";
         inherit inputs;
 
@@ -58,7 +58,6 @@
             };
           }
           ./hosts/sixstrings/default.nix
-          ./modules/darwin/default.nix
         ];
         specialArgs = { inherit inputs; };
       };

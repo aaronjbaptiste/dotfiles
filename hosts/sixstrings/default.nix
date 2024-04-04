@@ -1,6 +1,7 @@
 { pkgs, ... }: {
     imports = [
         ../common
+        ../modules/darwin/default.nix
     ];
 
     environment.systemPackages = [
@@ -9,8 +10,8 @@
     ];
 
     networking = {
-        hostName = "sixstrings";
-        computerName = "sixstrings";
+        hostName = "Aarons-MacBook-Pro";
+        computerName = "Aarons-MacBook-Pro";
     };
 
     services.nix-daemon.enable = true;

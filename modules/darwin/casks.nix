@@ -1,17 +1,40 @@
 _:
 
 [
-  # Development Tools
-  "visual-studio-code"
+    # Development
+    "visual-studio-code-insiders"
+    "rider"
 
-  # Communication Tools
-  "discord"
-  "slack"
+    # Communication
+    "discord"
+    "slack"
+    "zoom"
 
-  # Productivity Tools
-  "raycast"
+    # Entertainment
+    "spotify"
 
-  # Browsers
-  "google-chrome"
-  "firefox"
+    # Productivity
+    "raycast"
+    "cleanmymac"
+    "dropbox"
+
+    # Media
+    "imageoptim"
+
+    # Security
+    "1password"
+    "private-internet-access"
+
+    # Browsers
+    "google-chrome"
+    "firefox"
+    "microsoft-edge"
+
+    # Design
+    "blender"
+    "blockbench"
+
+    # Game dev
+    "unity-hub"
+
 ]

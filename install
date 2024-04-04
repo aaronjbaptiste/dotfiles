@@ -93,11 +93,11 @@ clone_repository() {
 darwin_build() {
   command -v darwin-rebuild >/dev/null || {
     # Install nix-darwin
-    nix run nix-darwin -- switch --flake "$HOME/dotfiles"
+    nix run nix-darwin -- switch --flake "$HOME/.dotfiles"
   }
 
   # Apply the configuration
-  darwin-rebuild switch --flake "$HOME/dotfiles"
+  darwin-rebuild switch --flake "$HOME/.dotfiles"
 }
 
 # Installation flow

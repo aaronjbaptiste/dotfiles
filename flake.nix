@@ -27,7 +27,8 @@
   outputs = { self, darwin, nixpkgs, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask } @inputs:
   {
     darwinConfigurations = {
-      "Aarons-MacBook-Pro" = darwin.lib.darwinSystem {
+      # TODO: how to avoid this hardcoded hostname?
+      sixstrings = darwin.lib.darwinSystem {
         system = "aaarch64-darwin";
         inherit inputs;
 

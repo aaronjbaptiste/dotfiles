@@ -29,6 +29,27 @@ install_command_line_tools() {
   echo "Command Line Tools are installed at $(xcode-select -p)"
 }
 
+set_initial_hostname() {
+  # On a new macbook HostName is not set by default
+  # If it's been set already we can skip this step
+  if [ -n "$(scutil --get HostName)" ]; then
+    echo "Hostname is already set to $(scutil --get HostName)... continuing ..."
+    return
+  fi
+
+  # Ask for hostname
+  echo "What would you like your hostname to be?"
+  read -r hostname
+
+  # Set the hostname
+  sudo scutil --set ComputerName "$hostname"
+  sudo scutil --set HostName "$hostname"
+  sudo scutil --set LocalHostName "$hostname"
+
+  echo "Hostname set to $hostname, please rerun this script in a new terminal to continue installation."
+  exit
+}
+
 install_nix() {
   command -v nix >/dev/null || {
     sh <(curl -L https://nixos.org/nix/install)
@@ -76,6 +97,7 @@ darwin_build() {
 # Installation flow
 sudo_prompt
 install_command_line_tools
+set_initial_hostname
 install_nix
 clone_repository
 darwin_build

@@ -2,7 +2,6 @@ _:
 
 [
     # Development
-    "visual-studio-code-insiders"
     "rider"
 
     # Communication
@@ -36,5 +35,4 @@ _:
 
     # Game dev
     "unity-hub"
-
 ]

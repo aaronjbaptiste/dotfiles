@@ -37,7 +37,7 @@
       system = "aaarch64-darwin";
       modules = [
         sharedDarwinConfiguration
-        ./test.nix
+        ./modules/darwin/default.nix
       ];
       specialArgs = { inherit inputs; };
     };

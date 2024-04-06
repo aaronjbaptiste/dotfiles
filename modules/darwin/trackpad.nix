@@ -5,10 +5,10 @@ with lib;
 {
   options = {
 
-    system.defaults.trackpad.TrackpadCornerSecondaryClick = pkgs.lib.mkOption {
-        type = pkgs.lib.types.nullOr (pkgs.lib.types.enum [ 0 1 2 ]);
+    system.defaults.trackpad.TrackpadCornerSecondaryClick = mkOption {
+        type = types.nullOr (types.enum [ 0 1 2 ]);
         default = null;
-        description = pkgs.lib.mdDoc ''
+        description = lib.mdDoc ''
             Set secondary click action.  The default is 0.
         '';
     };

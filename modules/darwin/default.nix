@@ -2,6 +2,9 @@
 
 {
     system.defaults.NSGlobalDomain."com.apple.swipescrolldirection" = false;
+    system.defaults.NSGlobalDomain."com.apple.mouse.tapBehavior" = 1;
+    system.defaults.NSGlobalDomain."com.apple.trackpad.trackpadCornerClickBehavior" = 1;
+    system.defaults.NSGlobalDomain."com.apple.trackpad.enableSecondaryClick" = 1;
 
     homebrew = {
         enable = true;

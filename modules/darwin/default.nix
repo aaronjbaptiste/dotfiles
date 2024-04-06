@@ -6,8 +6,8 @@
     system.defaults.NSGlobalDomain."com.apple.trackpad.trackpadCornerClickBehavior" = 1;
     system.defaults.trackpad.TrackpadRightClick = true;
     system.defaults.trackpad.Clicking = true;
-    system.defaults.trackpad.TrackpadRightClick = true;
     system.defaults.NSGlobalDomain."com.apple.trackpad.enableSecondaryClick" = true;
+    system.defaults.trackpad.TrackpadCornerSecondaryClick = 2;
 
     homebrew = {
         enable = true;

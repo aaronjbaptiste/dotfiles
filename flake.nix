@@ -33,6 +33,7 @@
         inherit inputs;
 
         modules = [
+          ./modules/darwin/trackpad.nix
           nix-homebrew.darwinModules.nix-homebrew
           {
             nix-homebrew = {

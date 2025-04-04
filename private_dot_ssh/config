@@ -1,0 +1,15 @@
+# bx2h GitHub
+Host bx2hgit
+	HostName github.com
+	User git
+	IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+	IdentityFile ~/.ssh/bx2h.pub
+	IdentitiesOnly yes
+
+# Aaron GitHub
+Host aarongit
+	HostName github.com
+	User git
+	IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+	IdentityFile ~/.ssh/aaronjbaptiste.pub
+	IdentitiesOnly yes

@@ -35,6 +35,12 @@ git config --global user.email "<email>"
 git config --global user.name "<user_name>"
 ```
 
+4. Change origin to ssh so we can push back
+
+```
+yadm remote set-url origin git@github.com:aaronjbaptiste/dotfiles.git
+```
+
 ## How to push changes
 
 ```

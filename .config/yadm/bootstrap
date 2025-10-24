@@ -3,15 +3,15 @@
 # Get the directory where this script is located
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-# Leverage git space-checkout to prevent README and LICENSE files from being pulled
-~/.local/bin/yadm gitconfig core.sparseCheckout true
-~/.local/bin/yadm sparse-checkout set --no-cone '/*' '!README.md' '!LICENSE.md'
-
 # Install everything
 source "$SCRIPT_DIR/bootstrap.d/macos.sh"
 source "$SCRIPT_DIR/bootstrap.d/homebrew.sh"
 source "$SCRIPT_DIR/bootstrap.d/proto.sh"
 source "$SCRIPT_DIR/bootstrap.d/npm.sh"
 source "$SCRIPT_DIR/bootstrap.d/fish.sh"
+
+# Leverage git sparse-checkout to prevent README and LICENSE files from being pulled
+yadm gitconfig core.sparseCheckout true
+yadm sparse-checkout set --no-cone '/*' '!README.md' '!LICENSE.md'
 
 echo "🎉 Setup complete!"

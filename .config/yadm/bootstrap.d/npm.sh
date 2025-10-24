@@ -3,9 +3,10 @@
 echo "[Start] Installing apps with npm"
 
 # Activate proto to make npm available
-if [ -f "$HOME/.proto/shims/npm" ]; then
-  export PATH="$HOME/.proto/shims:$PATH"
-fi
+export PATH="$HOME/.proto/shims:$HOME/.proto/bin:$PATH"
+
+# Use proto to ensure npm is available
+proto use node
 
 npm install -g @anthropic-ai/claude-code
 npm install -g @openai/codex

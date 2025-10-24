@@ -5,6 +5,8 @@ echo "[Start] Installing Homebrew"
 # Install Homebrew if not already installed
 if ! command -v brew &>/dev/null; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  # Add Homebrew to PATH for this session
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 else
     echo "[Start] Homebrew already installed, updating"
     brew update

@@ -4,14 +4,14 @@
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Leverage git space-checkout to prevent README and LICENSE files from being pulled
- yadm gitconfig core.sparseCheckout true
- yadm sparse-checkout set --no-cone '/*' '!README.md' '!LICENSE.md'
+~/.local/bin/yadm gitconfig core.sparseCheckout true
+~/.local/bin/yadm sparse-checkout set --no-cone '/*' '!README.md' '!LICENSE.md'
 
 # Install everything
-bash "$SCRIPT_DIR/bootstrap.d/macos.sh"
-bash "$SCRIPT_DIR/bootstrap.d/homebrew.sh"
-bash "$SCRIPT_DIR/bootstrap.d/proto.sh"
-bash "$SCRIPT_DIR/bootstrap.d/npm.sh"
-bash "$SCRIPT_DIR/bootstrap.d/fish.sh"
+source "$SCRIPT_DIR/bootstrap.d/macos.sh"
+source "$SCRIPT_DIR/bootstrap.d/homebrew.sh"
+source "$SCRIPT_DIR/bootstrap.d/proto.sh"
+source "$SCRIPT_DIR/bootstrap.d/npm.sh"
+source "$SCRIPT_DIR/bootstrap.d/fish.sh"
 
 echo "🎉 Setup complete!"

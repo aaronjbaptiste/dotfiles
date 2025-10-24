@@ -18,7 +18,7 @@ xcode-select --install
 mkdir -p ~/.local/bin
 curl -fLo ~/.local/bin/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm
 chmod a+x ~/.local/bin/yadm
-~/.local/bin/yadm clone https://github.com/aaronjbaptiste/dotfiles.git --boostrap
+~/.local/bin/yadm clone git@github.com:aaronjbaptiste/dotfiles.git --bootstrap
 rm -rf ~/.local/bin/yadm
 ```
 

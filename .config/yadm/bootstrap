@@ -9,6 +9,7 @@ source "$SCRIPT_DIR/bootstrap.d/homebrew.sh"
 source "$SCRIPT_DIR/bootstrap.d/proto.sh"
 source "$SCRIPT_DIR/bootstrap.d/npm.sh"
 source "$SCRIPT_DIR/bootstrap.d/fish.sh"
+source "$SCRIPT_DIR/bootstrap.d/go.sh"
 
 # Leverage git sparse-checkout to prevent README and LICENSE files from being pulled
 yadm gitconfig core.sparseCheckout true

@@ -1,0 +1,9 @@
+theme = Adventure Time
+font-size = 19
+background-blur = true
+background-opacity = 0.9
+mouse-hide-while-typing = true
+window-decoration = none
+macos-option-as-alt = true
+window-padding-x = 30
+window-padding-y = 30

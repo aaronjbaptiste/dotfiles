@@ -12,6 +12,7 @@ brew 'starship'
 brew 'xz'
 brew 'proto'
 brew 'fzf'
+brew 'atuin'
 brew 'helix'
 
 cask '1password'

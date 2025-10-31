@@ -1,4 +1,4 @@
-theme = "kanagawa"
+theme = "kanagawa-custom"
 
 [keys.normal]
 M = ":lsp-workspace-command open-preview"

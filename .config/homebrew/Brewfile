@@ -18,6 +18,7 @@ brew 'helix'
 
 cask '1password'
 cask 'zed'
+cask 'karabiner-elements'
 cask 'chatgpt'
 cask 'nikitabobko/tap/aerospace'
 cask 'spotify'

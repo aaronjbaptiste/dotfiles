@@ -27,15 +27,21 @@ Then Restart Mac.
 ## Post (optional)
 
 1. Log in to iCloud
-2. Generate SSH Key + Add public key to github
-3. Configure git author
+2. Disable Spotlight Keyboard shortcut (we replace it with Raycast)
+
+```
+System Settings > Keyboard > Keyboard Shortcuts > Spotlight > Show Spotlight search
+```
+
+3. Generate SSH Key + Add public key to github
+4. Configure git author
 
 ```
 git config --global user.email "<email>"
 git config --global user.name "<user_name>"
 ```
 
-4. Change origin to ssh so we can push back
+5. Change origin to ssh so we can push back
 
 ```
 yadm remote set-url origin git@github.com:aaronjbaptiste/dotfiles.git

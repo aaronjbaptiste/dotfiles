@@ -11,6 +11,7 @@ brew 'zellij'
 brew 'starship'
 brew 'xz'
 brew 'proto'
+brew 'fzf'
 brew 'helix'
 
 cask '1password'

@@ -4,7 +4,15 @@ auto-format = true
 language-servers = ["marksman", "mpls"]
 name = "markdown"
 
+[[language]]
+name = "html"
+roots = [".git"]
+language-servers = ["emmet-lsp"]
+
 [language-server.mpls]
 command = "mpls"
 args = ["--dark-mode", "--enable-emoji"]
 
+[language-server.emmet-lsp]
+command = "emmet-language-server"
+args = ["--stdio"]

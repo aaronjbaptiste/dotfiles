@@ -14,6 +14,7 @@ brew 'xz'
 brew 'proto'
 brew 'fzf'
 brew 'atuin'
+brew 'supabase'
 brew 'helix'
 
 cask '1password'

@@ -1,4 +1,5 @@
 brew 'fish'
+brew 'yazi'
 brew 'git'
 brew 'yadm'
 brew 'ripgrep'

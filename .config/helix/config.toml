@@ -1,5 +1,8 @@
 theme = "kanagawa-custom"
 
+[editor]
+true-color = true
+
 [keys.normal]
 M = ":lsp-workspace-command open-preview"
 C-y = [

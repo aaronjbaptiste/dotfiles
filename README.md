@@ -18,7 +18,21 @@ xcode-select --install
 mkdir -p ~/.local/bin
 curl -fLo ~/.local/bin/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm
 chmod a+x ~/.local/bin/yadm
-~/.local/bin/yadm clone https://github.com/aaronjbaptiste/dotfiles.git --bootstrap
+~/.local/bin/yadm clone https://github.com/aaronjbaptiste/dotfiles.git --no-bootstrap
+```
+
+Set this machine's class **before** bootstrapping - it controls which
+Brewfile and npm/proto steps run (see `.config/yadm/bootstrap.d`):
+
+```
+yadm config local.class work      # or: personal
+```
+
+This is local-only config, never pushed to the repo, so it has to be set
+on every new machine.
+
+```
+yadm bootstrap
 rm -rf ~/.local/bin/yadm
 ```
 

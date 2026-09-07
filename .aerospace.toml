@@ -69,6 +69,11 @@ if.app-name-regex-substring = 'quicktime'
 run = 'layout floating'
 
 [[on-window-detected]]
+if.app-id = "com.1password.1password"
+if.window-title-regex-substring = "^Quick Access"
+run = "layout floating"
+
+[[on-window-detected]]
 if.app-id = 'app.zen-browser.zen'
 run = 'move-node-to-workspace 1'
 

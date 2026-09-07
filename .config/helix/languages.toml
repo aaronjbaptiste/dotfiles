@@ -16,3 +16,28 @@ args = ["--dark-mode", "--enable-emoji"]
 [language-server.emmet-lsp]
 command = "emmet-language-server"
 args = ["--stdio"]
+
+[language-server.typescript-language-server]
+command = "/Users/aaronjb/.npm-global/bin/typescript-language-server"
+args = ["--stdio"]
+
+[language-server.tsgo]
+command = "/Users/aaronjb/.npm-global/bin/tsc"
+args = ["--lsp", "--stdio"]
+timeout = 120
+
+[[language]]
+name = "typescript"
+language-servers = ["tsgo", "typescript-language-server"]
+
+[[language]]
+name = "tsx"
+language-servers = ["tsgo", "typescript-language-server"]
+
+[[language]]
+name = "javascript"
+language-servers = ["tsgo", "typescript-language-server"]
+
+[[language]]
+name = "jsx"
+language-servers = ["tsgo", "typescript-language-server"]
